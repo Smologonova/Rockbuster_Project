@@ -42,9 +42,9 @@ ORDER BY total_film_revenue DESC;
 	
 --Film Count and Revenue by Genre	
 SELECT C.name AS genre, 
-      COUNT(A.film_id), 
+      COUNT(A.film_id) AS number_of_films, 
       SUM(E.amount) AS total_film_revenue	
-FROM film A	COUNT(A.film_id) AS number_of_films
+FROM film A	
 INNER JOIN film_category B ON A.film_id = B.film_id	
 INNER JOIN category C ON B.category_id = C.category_id	
 INNER JOIN inventory F ON A.film_id = F.film_id	
@@ -125,7 +125,7 @@ WHERE city IN (SELECT C.city
     		                   GROUP BY country			
     		                   ORDER BY COUNT(customer_id) DESC			
      		                   LIMIT 10)			
-              GROUP BY city,	country				
+              GROUP BY city, country				
               ORDER BY  COUNT(A.customer_id) DESC					
               LIMIT 10)					
 GROUP BY A.customer_id, C.city, D. country					
