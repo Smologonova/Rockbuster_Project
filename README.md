@@ -9,9 +9,9 @@ Rockbuster Stealth is a movie rental company that formally had stores around the
 Opensource tutorial data from PostgreSQL available [here](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip).
 
 ## Tools
-SQL - to retrieve data from relational database management system (RDBMS) and analyze the data.
-Excel – to analyze, find insights and prepare charts.
-Tableau - to turn insights into interactive data visualization.
+- SQL - to retrieve data from relational database management system (RDBMS) and analyze the data.
+- Excel – to analyze, find insights and prepare charts.
+- Tableau - to turn insights into interactive data visualization.
 
 ## Result
 - Start the streaming service by piloting in top 3 countries – India, China and United States by total revenue and number of customers as they account for 25% of all revenue and customer base. 
