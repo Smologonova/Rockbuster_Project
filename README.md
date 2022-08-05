@@ -11,7 +11,7 @@ Opensource tutorial data from PostgreSQL available [here](https://www.postgresql
 ## Tools
 - SQL - to retrieve data from relational database management system (RDBMS) and analyze the data.
 - Excel – to analyze, find insights and prepare charts.
-- Tableau - to turn insights into interactive data visualization.
+- Tableau - to turn insights into interactive data visualization [Rockbuster Stealth Tableau Link](https://public.tableau.com/app/profile/iryna.smologonova/viz/Rockbuster_16542998273360/Revenuebycountry?publish=yes).
 
 ## Result
 - Start the streaming service by piloting in top 3 countries – India, China and United States by total revenue and number of customers as they account for 25% of all revenue and customer base. 
