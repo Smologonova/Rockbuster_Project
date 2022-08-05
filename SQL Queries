@@ -1,0 +1,150 @@
+
+## Exploration
+
+-- Descriptive statistics
+SELECT MIN(rental_duration) AS min_rental_duration,	
+	MAX(rental_duration) AS max_rental_duration,
+	AVG(rental_duration) AS avg_rental_duation,
+	MIN(rental_rate) AS min_rental_rate,
+	MAX(rental_rate) AS max_rental_rate,
+	AVG(rental_rate) AS avg_rental_rate,
+	MIN(length) AS min_length,
+	MAX(length) AS max_length,
+	AVG(length) AS avg_length,
+	MIN(replacement_cost) AS min_replacement_cost,
+	MAX(replacement_cost) AS max_replacement_cost,
+	AVG(replacement_cost) AS avg_replacement_cost,
+	COUNT(*) AS count_rows
+FROM film;	
+
+
+-- Mode value for non-numerical columns for film table
+SELECT
+  mode() WITHIN GROUP (ORDER BY rating) AS rating_value,
+  mode() WITHIN GROUP (ORDER BY special_features) AS feature_value,
+  mode() WITHIN GROUP (ORDER BY release_year) AS year_value,
+  mode() WITHIN GROUP (ORDER BY title) AS title_value,
+  COUNT(*) AS count_rows
+FROM film;
+
+-- Film Count and Revenue by Rating	
+SELECT A.rating AS rating, 
+      COUNT(A.film_id) AS number_of_films, 
+      SUM(E.amount) AS total_film_revenue	
+FROM film A	
+INNER JOIN film_category B ON A.film_id = B.film_id	
+INNER JOIN category C ON B.category_id = C.category_id	
+INNER JOIN inventory F ON A.film_id = F.film_id	
+INNER JOIN rental D ON F.inventory_id = D.inventory_id	
+INNER JOIN payment E ON D.rental_id = E.rental_id	
+GROUP BY A. rating	
+ORDER BY total_film_revenue DESC;	
+	
+--Film Count and Revenue by Genre	
+SELECT C.name AS genre, 
+      COUNT(A.film_id), 
+      SUM(E.amount) AS total_film_revenue	
+FROM film A	COUNT(A.film_id) AS number_of_films
+INNER JOIN film_category B ON A.film_id = B.film_id	
+INNER JOIN category C ON B.category_id = C.category_id	
+INNER JOIN inventory F ON A.film_id = F.film_id	
+INNER JOIN rental D ON F.inventory_id = D.inventory_id	
+INNER JOIN payment E ON D.rental_id = E.rental_id	
+GROUP BY C.name	
+ORDER BY total_film_revenue DESC;	
+
+-- Searching for duplicate values in the film table
+SELECT title,
+       release_year,
+       language_id,
+       rental_duration,
+       COUNT(*)
+FROM film
+GROUP BY title,
+         release_year,
+         language_id,
+         rental_duration
+HAVING COUNT(*) >1;
+
+## Data Analysis
+
+--Get customer count and total payment received against each country
+SELECT country,
+       COUNT(A.customer_id) AS customer_count,
+       SUM(amount) AS total_revenue
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_ID = D.country_ID
+INNER JOIN payment E ON a.customer_id = E.customer_id
+GROUP BY country
+ORDER BY total_revenue DESC;
+
+--Rank films by revenue
+SELECT A.film_id, 
+      A.title AS title, 
+      A. rating AS rating, 
+      C.name AS genre, 
+      SUM(E.amount) AS total_film_revenue, 
+      RANK() OVER (ORDER BY SUM(E.amount) DESC) AS Rank
+FROM film A
+INNER JOIN film_category B ON A.film_id = B.film_id
+INNER JOIN category C ON B.category_id = C.category_id
+INNER JOIN inventory F ON A.film_id = F.film_id
+INNER JOIN rental D ON F.inventory_id = D.inventory_id
+INNER JOIN payment E ON D.rental_id = E.rental_id
+GROUP BY A.film_id, 
+      A.title, 
+      A. rating, 
+      C.name
+ORDER BY total_film_revenue DESC;
+
+--Top 5 customers in the top 10 cities who have paid the highest total amounts to Rockbuster
+SELECT A. customer_id, 
+      A.first_name, 
+      A.last_name, 
+      C.city, 
+      D.country,					
+      SUM (E. amount) AS total_amount_paid					
+FROM customer A					
+INNER JOIN address B ON A.address_id = B.address_id					
+INNER JOIN city C ON B.city_id = C.city_id					
+INNER JOIN country D ON C.country_ID = D.country_ID					
+INNER JOIN payment E ON A.customer_id = E.customer_id					
+WHERE city IN (SELECT C.city					
+	            FROM customer A 				
+	            INNER JOIN address B ON A.address_id = B.address_id				
+	            INNER JOIN city C ON B.city_id = C.city_id				
+	            INNER JOIN country D ON C.country_id = D.country_id				
+            	WHERE country IN				
+    		                  (SELECT D.country			
+     		                   FROM customer A			
+     		                   INNER JOIN address B ON A.address_id = B.address_id			
+     		                   INNER JOIN city C ON B.city_id = C.city_id			
+     		                   INNER JOIN country D ON C.country_id = D.country_id			
+    		                   GROUP BY country			
+    		                   ORDER BY COUNT(customer_id) DESC			
+     		                   LIMIT 10)			
+              GROUP BY city,	country				
+              ORDER BY  COUNT(A.customer_id) DESC					
+              LIMIT 10)					
+GROUP BY A.customer_id, C.city, D. country					
+ORDER BY total_amount_paid DESC					
+LIMIT 5;					
+
+--Top 20 lifetime customers
+SELECT A. customer_id, 
+       A.first_name, 
+       A.last_name, 
+       C.city, 
+       D.country,
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_ID = D.country_ID
+INNER JOIN payment E ON A.customer_id = E.customer_id
+GROUP BY A.customer_id, 
+         C.city, 
+         D.country
+ORDER BY total_amount_paid DESC
+LIMIT 20;
