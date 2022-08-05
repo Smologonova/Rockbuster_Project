@@ -10,7 +10,7 @@ Opensource tutorial data from PostgreSQL available [here](https://www.postgresql
 ## Tools
 - SQL - to retrieve data from relational database management system (RDBMS) and analyze the data, available [here](https://github.com/Smologonova/Rockbuster_Project/blob/main/SQL%20Queries).
 - Excel – to analyze, find insights and prepare charts, available [here](https://github.com/Smologonova/Rockbuster_Project/blob/main/queries_and_outputs.xlsx).
-- Tableau - to turn insights into interactive data visualization [Rockbuster Stealth Tableau Link](https://public.tableau.com/app/profile/iryna.smologonova/viz/Rockbuster_16542998273360/Revenuebycountry?publish=yes).
+- Tableau - to turn insights into interactive data visualization, available [here](https://public.tableau.com/app/profile/iryna.smologonova/viz/Rockbuster_16542998273360/Revenuebycountry?publish=yes).
 
 ## Result 
 [Rockbuster Stealth Presentation Link](https://github.com/Smologonova/Rockbuster_Project/blob/main/Presentation%20slides_Rockbuster%20Stealth.pdf)
