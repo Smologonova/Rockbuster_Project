@@ -13,7 +13,7 @@ Open source tutorial data from PostgreSQL available [here](https://www.postgresq
 - Tableau - to turn insights into interactive data visualization, available [here](https://public.tableau.com/app/profile/iryna.smologonova/viz/Rockbuster_16542998273360/Revenuebycountry?publish=yes).
 
 ## Result 
-[Rockbuster Stealth Presentation Link](https://github.com/Smologonova/Rockbuster_Project/blob/main/Presentation%20slides_Rockbuster%20Stealth.pdf)
+[Rockbuster Stealth Presentation Slides](https://github.com/Smologonova/Rockbuster_Project/blob/main/Presentation%20slides_Rockbuster%20Stealth.pdf)
 - Start the streaming service by piloting in top 3 countries – India, China and United States by total revenue and number of customers as they account for 25% of all revenue and customer base. 
 - Add to inventory movies: ratings PG-13 & NC 17 generating the most revenue and genres Comedy, New & Sports producing more revenue per film. 
 - Implement online acquiring customer loyalty program by launching a bonus system.
