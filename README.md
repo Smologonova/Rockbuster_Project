@@ -5,7 +5,7 @@ A data analytics project based on a sample database of a fictitious DVD rental c
 Rockbuster Stealth is a movie rental company that formally had stores around the world. Because of the stiff competition from streaming services, the management is planning to use the existing movie licenses to launch an online video rental service to stay competitive. The objective of this study is to develop insights to help with the launch strategy for the new online video service.
 
 ## Data 
-Opensource tutorial data from PostgreSQL available [here](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip).
+Open source tutorial data from PostgreSQL available [here](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip).
 
 ## Tools
 - SQL - to retrieve data from relational database management system (RDBMS) and analyze the data, available [here](https://github.com/Smologonova/Rockbuster_Project/blob/main/SQL%20Queries).
