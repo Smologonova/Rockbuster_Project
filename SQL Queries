@@ -95,7 +95,7 @@ INNER JOIN rental D ON F.inventory_id = D.inventory_id
 INNER JOIN payment E ON D.rental_id = E.rental_id
 GROUP BY A.film_id, 
       A.title, 
-      A. rating, 
+      A.rating, 
       C.name
 ORDER BY total_film_revenue DESC;
 
