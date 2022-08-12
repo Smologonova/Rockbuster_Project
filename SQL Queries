@@ -37,7 +37,7 @@ INNER JOIN category C ON B.category_id = C.category_id
 INNER JOIN inventory F ON A.film_id = F.film_id	
 INNER JOIN rental D ON F.inventory_id = D.inventory_id	
 INNER JOIN payment E ON D.rental_id = E.rental_id	
-GROUP BY A. rating	
+GROUP BY A.rating	
 ORDER BY total_film_revenue DESC;	
 	
 --Film Count and Revenue by Genre	
