@@ -18,7 +18,7 @@ Open source tutorial data from PostgreSQL available [here](https://www.postgresq
 - Add to inventory movies: ratings PG-13 & NC 17 generating the most revenue and genres Comedy, New & Sports producing more revenue per film. 
 - Implement online acquiring customer loyalty program by launching a bonus system.
 
-## Key learning experience
+## Key takeaways
+- A bubble chart is a solution to visualize three metrics – number of transactions, revenue and average revenue per number of transactions. It allowed to include the addition of a third dimension as a bubble size/color to emphasize the most popular genres.
 - Common Table Expressions (CTE) is more readable than subqueries and can be reusable. However, subqueries and CTE  have pros & cons and the choice between them should be made on a case-by-case basis.
 - SQL ranking functions allowed me to define top 20 movies with the highest revenue in a simple way and made my query more readable.  RANK()/DENSE_RANK() functions are great for sequencing and comparing data across various factors. 
-- A bubble chart is a solution to visualize three metrics – number of transactions, revenue and average revenue per number of transactions. It allowed to include the addition of a third dimension as a bubble size/color to emphasize the most popular genres.
